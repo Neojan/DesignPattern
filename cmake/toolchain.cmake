@@ -77,7 +77,7 @@ endif()
 set(CMAKE_STRIP ${TOOLCHAIN_PREFIX}strip)
 set(CMAKE_OBJCOPY ${TOOLCHAIN_PREFIX}objcopy)
 
-function(ADD_AI_LIBRARY name)
+function(ADD_LIBRARY name)
     add_library( ${name}_${ARGV1} ${ARGN} )
     set_target_properties (${name}_${ARGV1} PROPERTIES OUTPUT_NAME ${name})
     set_target_properties (${name}_${ARGV1} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
@@ -98,6 +98,6 @@ function(ADD_AI_LIBRARY name)
         endif()
     endif()
 
-endfunction(ADD_AI_LIBRARY name)
+endfunction(ADD_LIBRARY name)
 
 
