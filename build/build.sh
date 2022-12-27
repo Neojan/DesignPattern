@@ -9,7 +9,7 @@ export version_minor="0"
 export version_patch="0"
 
 platform_list=("x86")
-platform_defalut="x86"
+platform_default="x86"
 
 version_code="V${version_major}.${version_minor}.${version_patch}"
 
@@ -18,7 +18,7 @@ function build_help()
     echo "${shell_relative_name} options:"
     echo "options:"
     echo -e " -p platform, --platform=platform    \c" # -e开启转义 \c表示不加换行符号
-    echo "choose platform to compile, not we support <${platform_list[@]}>, default ${platform_defalut}"
+    echo "choose platform to compile, not we support <${platform_list[@]}>, default ${platform_default}"
     echo -e " -b branch, --branch=branch   \c"
     echo "choose comiple mode, <${build_mode_list[@]}, default ${build_mode_default}>"
     echo -e " --clean   \c"
@@ -254,10 +254,10 @@ export build_mode
 
 
 # 检验编译平台 有效性
-[ -z "${plaform_pre}" ] && plaform_pre=${plaform_default}
-# plaform_pre=${plaform_pre//","/" "}  支持多平台时再启用
-echo -e "platform:  ${plaform_pre} \n"
-for platform_index in $plaform_pre
+[ -z "${platform_pre}" ] && platform_pre=${platform_default}
+# platform_pre=${platform_pre//","/" "}  支持多平台时再启用
+echo -e "platform:  ${platform_pre} \n"
+for platform_index in $platform_pre
 do
     check_platform ${platform_index}
 done
