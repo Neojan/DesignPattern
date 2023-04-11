@@ -99,7 +99,7 @@ private:
 public:
     ProductPhone* CreatePhone()
     {
-        return new IPhone();
+        return new MiPhone();
     }
     ProductPC* CreatePC()
     {
