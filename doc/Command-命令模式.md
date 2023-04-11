@@ -1,0 +1,82 @@
+## 动机
+* 在软件构建过中，“行为请求者”与“行为实现者”通常呈现一种“紧耦合”。但在某些场合 — 比如需要对行为进行“记录、撤销/重做、事务”等处理，这种无法抵御变化的紧耦合是不合适的
+* 在这种情况下，如何将“行为请求者”与“行为实现者”解耦，将一组行为抽象为对象，可以实现二者之间的松耦合
+
+## 模式定义
+将一个请求（行为）封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作
+
+## 结构
+
+![在这里插入图片描述](./pics/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F.jpeg)
+
+
+## 要点
+* Command 模式的根本目的在于将“行为请求者”与“行为实现者”解耦，在面向对象语言中，常见的实现手段是“ 将行为抽象为对象 ”
+* 实现Command 接口的具体命令对象ConcreteCommand 有时候根据需要可能会保存一些额外的状态信息。通过使用 Composite 模式，可以将多个“命令”封装为一个“ 复合命令 ” MacroCommand
+
+## 代码
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class Receiver {
+public:
+    void Action()
+    {
+        cout << "Receiver action" << endl;
+    }
+};
+
+class Command {
+public:
+    virtual void Execute() = 0;
+    virtual ~Command() {}
+};
+
+class ConcreteCommand : public Command {
+private:
+    Receiver* m_recv;
+
+public:
+    ConcreteCommand(Receiver* recv)
+        : m_recv(recv)
+    {
+    }
+    ~ConcreteCommand() {}
+    void Execute()
+    {
+        m_recv->Action();
+    }
+};
+
+class Invoker {
+private:
+    Command* m_command;
+
+public:
+    void Set(Command* command)
+    {
+        m_command = command;
+    }
+    void Confirm()
+    {
+        if(m_command)
+        {
+            m_command->Execute();
+        }
+    }
+};
+
+void TestCommand(void)
+{
+    Receiver* recv = new Receiver();
+    Command*  cmd  = new ConcreteCommand(recv);
+    Invoker   invoker;
+    invoker.Set(cmd);
+    invoker.Confirm();
+    delete recv;
+    delete cmd;
+}
+```
