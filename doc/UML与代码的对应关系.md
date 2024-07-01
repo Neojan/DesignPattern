@@ -5,7 +5,8 @@
 
 虚线+箭头
 
-![](https://img-blog.csdn.net/20130505113942124)
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/33bcade8-a613-4385-abcc-6cdc4fb52a7a)
+
 
 可描述为：Uses a
 
@@ -56,11 +57,13 @@ public:
 
 实线 + 箭头
 
-![](https://img-blog.csdn.net/20130505114005014)
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/56938e6a-4035-4d9f-9d34-1290d0681775)
+
 
 ### 双向关联
 
-![](https://img-blog.csdn.net/20130505114035810)
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/3cf04564-c66c-44db-86f5-b6850d2c2e9a)
+
 
 
 可描述为：Has a
