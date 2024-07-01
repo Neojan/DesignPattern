@@ -118,14 +118,15 @@ public:
 
 聚合关系，用空心菱形加箭头表示
 
-![](https://img-blog.csdn.net/20130505114051731)
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/f9b1186a-b857-4c87-ac6f-49365be91ba4)
         
 
 ### 组合
 
 组合关系，用实心菱形加箭头表示，类之间的耦合关系比聚合强！
 
-![](https://img-blog.csdn.net/20130505114107012)
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/8b8ae3d1-98b5-4563-9059-7e068bf50193)
+
 
 在生成代码的时候，关联关系的类会增加属性----即一般为private私有成员变量。
 
@@ -196,8 +197,7 @@ public:
 
 实线+空心箭头
 
-![](https://img-blog.csdn.net/20130505114121433)
-
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/3238ed47-611b-44a8-8f5a-91e93fd0a5fa)
 
 
 > 为什么要多用组合少用继承？
@@ -212,7 +212,7 @@ public:
 
 虚线+空心箭头
 
-![](https://img-blog.csdn.net/20130505114134495)
+![image](https://github.com/Neojan/DesignPattern/assets/13540636/7d3e153a-221f-484d-9638-bcdb98fa21b9)
 
 
 ```cpp
