@@ -80,7 +80,7 @@ public:
 // class MemoryStream : public Stream ...
 
 
-class Decorator {
+class Decorator : public Stream {
 private:
     Stream* m_stream;
 
