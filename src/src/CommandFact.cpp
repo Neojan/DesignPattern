@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -78,21 +80,52 @@ class King
     }
 };
 
+// MacroCommand 复合命令对象
+class MacroCommand : public Command
+{
+private:
+    std::vector<std::shared_ptr<Command>> commands;
+
+public:
+    void addCommand(std::shared_ptr<Command> command)
+    {
+        commands.push_back(command);
+    }
+
+    void removeCommand(size_t index)
+    {
+        if (index < commands.size())
+        {
+            commands.erase(commands.begin() + index);
+        }
+    }
+
+    void Execute() override
+    {
+        for (auto& command : commands)
+        {
+            command->Execute();
+        }
+    }
+};
+
 void TestCommandFact(void)
 {
-    Wizard*  pWizard          = new Wizard();
-    Command* pSavePrincessCmd = new SavePrincessCommand(pWizard);
-    Command* pDefeatDragonCmd = new DefeatDragonCommand(pWizard);
+    Wizard* pWizard = new Wizard();
+
+    std::shared_ptr<Command> SavePrincessCmd(new SavePrincessCommand(pWizard));
+    std::shared_ptr<Command> DefeatDragonCmd(new DefeatDragonCommand(pWizard));
+    MacroCommand*            pMacroCommand   = new MacroCommand();
+    pMacroCommand->addCommand(SavePrincessCmd);
+    pMacroCommand->addCommand(DefeatDragonCmd);
 
     King* pKing = new King();
-    pKing->SetCommand(pSavePrincessCmd);
+    pKing->SetCommand(pMacroCommand);
+    // pKing->SetCommand(pSavePrincessCmd);
+    // pKing->SetCommand(pDefeatDragonCmd);        
     pKing->SendCommand();
 
-    pKing->SetCommand(pDefeatDragonCmd);
-    pKing->SendCommand();
-
-    delete pSavePrincessCmd;
-    delete pDefeatDragonCmd;
+    delete pMacroCommand;
     delete pWizard;
     delete pKing;
 }
