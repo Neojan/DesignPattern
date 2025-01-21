@@ -6,8 +6,8 @@
 用一个中介对象来封装（封装变化）一系列的对象交互。中介者使各对象不需要显式的相互引用（编译时依赖 -> 运行时依赖 ），从而使其耦合松散（管理变化），而且可以独立地改变它们之间的交互
 
 ## 结构
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200406173151833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21nMmZseWluZ2Zm,size_16,color_FFFFFF,t_70#pic_center#pic_center)
 
+![在这里插入图片描述](./pics/%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F.jpeg)
 
 ## 要点
 * 将多个对象间复杂的关联关系解耦，Mediator 模式将多个对象间的控制逻辑进行集中管理，变“多个对象互相关联”为“多个对象和一个中介者关联”，简化了系统的维护，抵御了可能的变化
