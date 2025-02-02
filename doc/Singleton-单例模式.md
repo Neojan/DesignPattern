@@ -42,8 +42,6 @@ public:
     // Singleton &operator=(const Singleton &) = delete;
     static Singleton* GetInstance()
     {
-        // static Singleton m_instance;
-        // return m_instance;
         if (NULL == m_instance)
         {
             lock_guard<mutex> lock(m_mutex);
@@ -71,4 +69,20 @@ void TestSingleton()
     // Singleton a;                             //error: ‘Singleton::Singleton()’ is private within this context
     // Singleton a = *Singleton::GetInstance(); //error: ‘Singleton::Singleton(const Singleton&)’ is private within this context
 }
+```
+或者
+```cpp
+class Singleton
+{
+public:
+    static Singleton& GetInstance()
+    {
+        static Singleton instance;
+        return instance;
+    }
+    void Tell()
+    {
+        std::cout << "This is Singleton." << std::endl;
+    }
+};
 ```
