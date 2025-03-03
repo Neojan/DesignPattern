@@ -74,6 +74,11 @@ void TestSingleton()
 ```cpp
 class Singleton
 {
+private:
+   Singleton() {} // 私有构造函数
+   Singleton(const Singleton&) = delete; // 禁止拷贝
+   Singleton& operator=(const Singleton&) = delete; // 禁止赋值
+
 public:
     static Singleton& GetInstance()
     {
